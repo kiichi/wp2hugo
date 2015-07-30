@@ -55,3 +55,10 @@ docs/_build/
 
 # PyBuilder
 target/
+
+
+
+#This Project Speicific
+testdump/
+ogsite.sh
+error.txt
