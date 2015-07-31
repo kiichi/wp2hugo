@@ -40,9 +40,17 @@ if args.limit:
 
 # ----------------------------------------------------------------
 # DB Config
-# run this in console to figure out where the socket file is
+# to find unix socket file of mysql,  run this in console 
+# to figure out where the socket file is
 # mysql_config --socket
-conn = MySQLdb.connect(unix_socket=args.server,
+conn = None
+if args.server.find('.sock') > 0:
+	conn = MySQLdb.connect(unix_socket=args.server,
+				user=args.username,
+				passwd=args.password,
+				db=args.database)
+else:
+	conn = MySQLdb.connect(host=args.server,
 			user=args.username,
 			passwd=args.password,
 			db=args.database)
